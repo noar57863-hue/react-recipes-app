@@ -1,13 +1,19 @@
-import { Routes, Route } from 'react-router';
-import RecipesList from './pages/RecipesList';
+import { Routes, Route } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+// ↓ כאן כל אחת מוסיפה את ה-import שלה ↓
+import RecipesList from "./pages/RecipesList";
 
 export default function App() {
   return (
-    <div className="app-container">
-      <Routes>
-        <Route path="/" element={<RecipesList />} />
-        {/* בהמשך תלמידה ב׳ תוסיף כאן נתיבים נוספים */}
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        {/* ↓ כאן כל אחת מוסיפה את ה-Route שלה ↓ */}
+        <Route path="recipes" element={<RecipesList />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
