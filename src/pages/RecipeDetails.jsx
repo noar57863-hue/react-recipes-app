@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 
 export default function RecipeDetails() {
   const { id } = useParams();
@@ -28,6 +28,7 @@ export default function RecipeDetails() {
 
   return (
     <div>
+      <Link to="/recipes">חזרה לרשימה</Link>
       {recipe && (
         <>
           <h1>{recipe.name}</h1>
@@ -49,6 +50,7 @@ export default function RecipeDetails() {
               <li key={index}>{step}</li>
             ))}
           </ol>
+          <Link to={`/recipes/${Number(id) + 1}`}>המתכון הבא</Link>
         </>
       )}
     </div>
